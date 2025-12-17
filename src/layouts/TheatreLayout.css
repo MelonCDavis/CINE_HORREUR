@@ -1,0 +1,396 @@
+.theatre-bg {
+  position: fixed;
+  inset: 0;
+  background: url("/assets/burnt-film.jpg") center / cover no-repeat fixed;
+  z-index: 0;
+}
+
+.theatre-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 180px;
+  background: url("/assets/poster-header.jpg") center / cover no-repeat;
+  z-index: 10;
+  box-shadow: 0 4px 30px rgba(0,0,0,0.85);
+}
+
+.theatre-nav {
+  width: 80%;
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+
+  margin-top: 60px;
+  z-index: 35;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 7px;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.75),
+    rgba(0, 0, 0, 0.45)
+  );
+  backdrop-filter: blur(6px);
+  box-shadow: 0 -10px 30px rgba(0,0,0,0.5);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+
+.theatre-nav-inner {
+  max-width: 1200px;
+  width: 80%;
+  margin: 0 auto;
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.theatre-nav-title {
+  font-family: "Cinzel", "Georgia", serif;
+  font-size: 1.6rem;
+  letter-spacing: 2px;
+  color: #f5e6c8;
+  text-shadow:
+    0 0 6px rgba(255, 200, 120, 0.4),
+    0 0 12px rgba(255, 120, 40, 0.25);
+  white-space: nowrap;
+}
+
+.theatre-nav-links {
+  display: flex;
+  gap: 28px;
+  padding-right: 5-px;
+}
+
+.theatre-nav-link {
+  position: relative;
+  font-family: "Cinzel", "Georgia", serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.9rem;
+  color: #ddd;
+  text-decoration: none;
+  padding: 6px 10px;
+  transition: color 0.25s ease;
+}
+
+.theatre-nav-link::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -6px;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(to right, #caa25a, #f5e6c8);
+  transform: translateX(-50%);
+  transition: width 0.25s ease;
+}
+
+.theatre-nav-link:hover {
+  color: #f5e6c8;
+}
+
+.theatre-nav-link:hover::after {
+  width: 100%;
+}
+
+.theatre-nav-link.active {
+  color: #f5e6c8;
+}
+
+.theatre-nav-link.active::after {
+  width: 100%;
+}
+
+.theatre-content {
+  position: relative;
+  z-index: 10;
+  padding-top: 80px;
+  padding-bottom: 20px;
+}
+
+.theatre-stage {
+  margin-top: 80px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 80px;
+}
+
+.theatre-curtain-overlay {
+  pointer-events: none;
+}
+
+.curtain {
+  position: fixed;
+  top: 160px;
+  padding-right:100px;
+  bottom: 0;
+  width: 180px;
+  background-size: cover;
+}
+
+.curtain-left {
+  left: 0;
+  background-image: url("/assets/curtain-left.png");
+}
+
+.curtain-right {
+  right: 0;
+  background-image: url("/assets/curtain-right.png");
+}
+
+.theatre-search-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-top: 100px;
+  margin-bottom: 30px;
+}
+
+.theatre-search-input {
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  padding: 10px 14px;
+  font-family: "Cinzel", "Georgia", serif;
+  border-radius: 7px;
+  font-size: 0.9rem;
+  color: #f5e6c8;
+  letter-spacing: 1px;
+  width: 260px;
+  outline: none;
+  transition: border 0.25s ease, box-shadow 0.25s ease;
+}
+
+.theatre-search-input::placeholder {
+  color: rgba(245, 230, 200, 0.5);
+}
+
+.theatre-search-input:focus {
+  border-color: #caa25a;
+  box-shadow: 0 0 10px rgba(202, 162, 90, 0.4);
+}
+
+.theatre-search-button {
+  background: linear-gradient(to bottom, #3b2a1a, #1e140c);
+  border: 1px solid #caa25a;
+  color: #f5e6c8;
+  font-family: "Cinzel", "Georgia", serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 10px 16px;
+  cursor: pointer;
+  transition: background 0.25s ease, transform 0.15s ease;
+  border-radius: 7px;
+}
+
+.theatre-search-button:hover {
+  background: linear-gradient(to bottom, #4a341f, #26190f);
+}
+
+.theatre-search-button:active {
+  transform: translateY(1px);
+}
+
+.poster-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 28px;
+}
+
+.poster-card {
+  cursor: pointer;
+  color: #f5e6c8;
+  text-align: center;
+  transition: transform 0.3s ease, filter 0.3s ease;
+  border-radius: 7px;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.75),
+    rgba(0, 0, 0, 0.45)
+  );
+}
+
+.poster-card img {
+  width: 100%;
+  border-radius: 4px;
+}
+
+.poster-grid.spotlight-active .poster-card {
+  filter: blur(4px) brightness(0.6);
+}
+
+.poster-card.active {
+  filter: none;
+  transform: scale(1.05);
+}
+
+.spotlight-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  backdrop-filter: blur(4px);
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.spotlight-card {
+  max-width: 600px;
+  color: #f5e6c8;
+  background: #111;
+  padding: 24px;
+  border-radius: 6px;
+  box-shadow: 0 0 40px rgba(255,200,120,0.4);
+}
+
+.poster-card:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 0 25px rgba(0, 0, 0, 0.9),
+    0 0 12px rgba(202, 162, 90, 0.25);
+}
+
+.theatre-error-panel {
+  max-width: 900px;
+  margin: 40px auto 0 auto;
+  padding: 18px 18px;
+  border: 1px solid rgba(245, 230, 200, 0.35);
+  background: rgba(0, 0, 0, 0.72);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.7);
+  border-radius: 14px;
+}
+
+.theatre-error-title {
+  margin: 0 0 8px 0;
+  font-family: "Cinzel", "Georgia", serif;
+  letter-spacing: 1px;
+  color: #f5e6c8;
+  text-shadow: 0 0 14px rgba(255, 160, 60, 0.25);
+  text-align: center;
+}
+
+.theatre-error-text {
+  text-align: center;
+  margin: 0 0 12px 0;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.4;
+}
+
+.theatre-error-details {
+  margin: 0 0 14px 0;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 120, 80, 0.45);
+  background: rgba(40, 0, 0, 0.55);
+  color: rgba(255, 220, 210, 0.95);
+  overflow: auto;
+  font-size: 0.9rem;
+}
+
+.theatre-error-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.theatre-error-btn {
+  border: 1px solid rgba(245, 230, 200, 0.35);
+  background: rgba(120, 0, 0, 0.55);
+  color: #f5e6c8;
+  padding: 8px 12px;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.theatre-error-btn:hover {
+  background: rgba(140, 0, 0, 0.7);
+}
+
+.theatre-error-link {
+  color: #f5e6c8;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(245, 230, 200, 0.35);
+  padding-bottom: 2px;
+}
+
+.theatre-empty-state {
+  margin-top: 140px;
+  text-align: center;
+  font-family: "Cinzel", "Georgia", serif;
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+  color: #f5e6c8;
+  text-shadow:
+    0 0 6px rgba(255, 200, 120, 0.35),
+    0 0 14px rgba(255, 120, 40, 0.25);
+  opacity: 0.9;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.75),
+    rgba(0, 0, 0, 0.45)
+  );
+  width: 50%;
+  border-radius: 7px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.theatre-empty-state {
+  animation: fadeInStage 0.6s ease-out;
+}
+
+@keyframes fadeInStage {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 0.9;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 900px) {
+  .theatre-stage {
+    padding: 0 20px;
+  }
+
+  .curtain {
+    display: none;
+  }
+
+  .theatre-header {
+    height: 80px;
+  }
+
+  .theatre-content {
+    padding-top: 160px;
+  }
+}
+
+@media (max-width: 700px) {
+  .theatre-nav-inner {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .theatre-nav-links {
+    gap: 18px;
+  }
+  .theatre-nav {
+    width: 100%;
+    border-radius: 0;
+    left: 0;
+    transform: none;
+  }
+}
